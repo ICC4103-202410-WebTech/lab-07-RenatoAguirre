@@ -60,17 +60,13 @@ end
     published_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
   )
 
-  post.tags << tags.sample
+  tag = tags.sample
+  post.tags << tag
 
-  tags.each do |tag|
-    post = Post.create!(
-      title: Faker::Lorem.sentence,
-      content: Faker::Lorem.paragraph,
-      user: User.all.sample,
-      answers_count: 0,
-      likes_count: 0,
-      published_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-    )
-    post.tags << tag
-  end
+  # Seed post_tags table
+  PostTag.create!(
+    post: post,
+    tag: tag
+  )
+
 end
