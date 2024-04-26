@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :posts
 
-  validates :name, presence: { message: "Please provide your name." }
-  validates :email, presence: { message: "Please provide your email." }, uniqueness: { message: "This email is already taken." }, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Please provide a valid email address." }
-  validates :password, presence: { message: "Please provide a password." }, length: { minimum: 6, message: "Password must be at least 6 characters long." }
+  validates :name, presence: { message: "Please provide your name! Surely you must have one" }
+  validates :email, presence: { message: "Please provide your email!" }, uniqueness: { message: "This email is already taken, weird" }, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Please provide a valid email address don't try to fool me" }
+  validates :password, presence: { message: "Are you sure you're gonna go without a password? bold, but try again" }, length: { minimum: 6, message: "Password's too short man, someone's about to hack you bruh'" }
 end
