@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tag
 
   belongs_to :parent_post, class_name: "Post", optional: true
-  add_reference :posts, :parent_post, null: false, foreign_key: true
+  has_many :posts
 
   validates :title, presence: { message: "Provide a title!" }
   validates :content, presence: { message: "I cannot exist without content :(" }
