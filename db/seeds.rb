@@ -12,7 +12,6 @@ User.delete_all
 Tag.delete_all
 
 
-# Create Users
 5.times do |i|
   user = User.create!(
     name: "User #{i+1}",
@@ -21,7 +20,6 @@ Tag.delete_all
   )
 
 
-  # Create at least one post for each user
   user.posts.create!(
     title: "Post #{i+1}",
     content: Faker::Lorem.paragraph,
@@ -44,7 +42,6 @@ john.posts.create!(
 )
 
 
-# Seed Tags
 tags = []
 5.times do |i|
   tag = Tag.create!(
@@ -53,7 +50,6 @@ tags = []
   tags << tag
 end
 
-# Seed Posts
 10.times do
   post = Post.create!(
     title: Faker::Lorem.sentence,
@@ -64,10 +60,8 @@ end
     published_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
   )
 
-  # Ensure each post has at least one tag
   post.tags << tags.sample
 
-  # Ensure each tag is associated with at least one post
   tags.each do |tag|
     post = Post.create!(
       title: Faker::Lorem.sentence,
